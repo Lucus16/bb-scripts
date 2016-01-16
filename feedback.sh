@@ -17,6 +17,10 @@ if [ ! -e "${1:+$1/}grades.csv" ]; then
 	exit
 fi
 
+#erase all grades from grades.csv
+head -n 1 "${1:+$1/}grades.csv" > "${1:+$1/}grades.tmp"
+mv "${1:+$1/}grades.tmp" "${1:+$1/}grades.csv"
+
 echo May spam.
 for fulldir in "${1:+$1/}"[sez][0-9]*; do
 	dir="${fulldir##*/}"
